@@ -11,6 +11,8 @@ namespace Web.Portal.Controllers
 
     using DTO;
 
+    using Web.Portal.App_Start;
+
     [Route("api/persons")]
     public class PersonsController : ApiController
     {
@@ -20,6 +22,11 @@ namespace Web.Portal.Controllers
         public PersonsController(IPersonsAction action)
         {
             this.action = action;
+        }
+
+        public PersonsController()
+        {
+            this.action = StructuremapMvc.StructureMapDependencyScope.Container.GetInstance<IPersonsAction>();
         }
         
         [HttpGet]

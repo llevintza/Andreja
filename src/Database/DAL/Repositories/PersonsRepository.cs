@@ -21,9 +21,9 @@ namespace DAL.Repositories
         private Logger log;
 
         public PersonsRepository(
-            DbSet<Person> dbSet,
+            ApplicationDbContext context,
             IMapper mapper)
-            : base(dbSet)
+            : base(context.Persons)
         {
             this.mapper = mapper;
             this.log = new Logger(this.GetType());

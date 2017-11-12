@@ -5,14 +5,14 @@ using System.Linq;
 
 using AutoMapper;
 
+using DAL.DbEntities;
 using DAL.Repositories.Interface;
-
-using DTO;
 
 using Logging;
 
 namespace DAL.Repositories
 {
+
     /// <summary>
     /// The employees repository.
     /// </summary>
@@ -26,13 +26,11 @@ namespace DAL.Repositories
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeesRepository"/> class.
         /// </summary>
-        /// <param name="dbSet">
-        /// The database set.
-        /// </param>
+        /// <param name="context">database context</param>
         public EmployeesRepository(
-            DbSet<Employee> dbSet,
+            ApplicationDbContext context,
             IMapper mapper)
-            : base(dbSet)
+            : base(context.Employees)
         {
             this.mapper = mapper;
             this.log = new Logger(this.GetType());
