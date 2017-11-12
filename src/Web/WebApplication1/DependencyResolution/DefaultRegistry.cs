@@ -42,7 +42,7 @@ namespace Web.Portal.DependencyResolution
                     });
             //actions
             this.For<IPersonsAction>().Use<PersonsAction>();
-            this.For<IEmployeesRepository>().Use<EmployeesRepository>();
+            this.For<IEmployeesAction>().Use<EmployeesAction>();
 
             //repositories
             this.For<IPersonsRepository>().Use<PersonsRepository>();
